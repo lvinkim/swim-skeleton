@@ -1,0 +1,22 @@
+{
+  "name": "lvinkim/swim-skeleton",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "lvinkim/swim": "^0.2.3"
+  },
+  "require-dev": {
+    "swoft/swoole-ide-helper": "dev-master",
+    "phpunit/phpunit": "^6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}
