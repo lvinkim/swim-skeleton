@@ -8,6 +8,11 @@ swim 框架
 $ composer create-project lvinkim/swim-skeleton [my-app-name]
 ```
 
+### 配置
+
+```
+$ cp .env.example .env
+```
 
 ### 启动
 
