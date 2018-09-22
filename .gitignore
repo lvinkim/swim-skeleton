@@ -9,7 +9,6 @@
 !.env.example
 !.gitignore
 !composer.json
-!composer.lock
 !docker-compose.yml
 !docker-compose-dev.yml
 !LICENSE

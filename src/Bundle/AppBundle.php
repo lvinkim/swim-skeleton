@@ -10,6 +10,7 @@ namespace App\Bundle;
 
 use App\Command\IamAliveCommand;
 use App\Service\ExampleService;
+use App\Service\Plates\PlatesEngine;
 use Lvinkim\Swim\Bundle\Bundle;
 use Lvinkim\Swim\Middleware\AccessCostMiddleware;
 use Lvinkim\Swim\Service\AutoRegister;
@@ -31,6 +32,7 @@ class AppBundle extends Bundle
 
         $autoRegister->register([
             ExampleService::class,
+            PlatesEngine::class,
         ]);
         // ... register more services
 

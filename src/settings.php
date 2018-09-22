@@ -29,6 +29,10 @@ return (function () {
         "dependencies" => __DIR__ . "/dependencies.php",
         "middleware" => __DIR__ . "/middleware.php",
         "routes" => __DIR__ . "/routes.php",
+        "plates" => [
+            "templatePath" => dirname(__DIR__) . "/templates",
+            "fileExtension" => "phtml",
+        ],
     ];
 
 })();

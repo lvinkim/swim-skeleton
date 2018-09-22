@@ -8,8 +8,10 @@
 
 
 use App\Action\IndexAction;
+use App\Action\PlatesAction;
 
 /** @var \Slim\App $app */
 
 $app->get('/', IndexAction::class);
+$app->get('/plates', PlatesAction::class);
 

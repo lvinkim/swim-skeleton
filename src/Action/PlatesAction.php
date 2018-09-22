@@ -2,25 +2,26 @@
 /**
  * Created by PhpStorm.
  * User: lvinkim
- * Date: 2018/8/19
- * Time: 11:15 PM
+ * Date: 23/09/2018
+ * Time: 1:26 AM
  */
 
 namespace App\Action;
 
 
-use App\Service\ExampleService;
+use App\Service\Plates\PlatesEngine;
 use Lvinkim\Swim\Action\Component\ActionInterface;
 use Lvinkim\Swim\Kernel;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class IndexAction implements ActionInterface
+class PlatesAction implements ActionInterface
 {
 
-    /** @var ExampleService */
-    private $exampleService;
+    private $app;
+    /** @var PlatesEngine */
+    private $platesEngine;
 
     /**
      * ActionInterface constructor.
@@ -29,7 +30,8 @@ class IndexAction implements ActionInterface
      */
     public function __construct(ContainerInterface $container)
     {
-        $this->exampleService = $container->get(ExampleService::class);
+        $this->app = $container->get("settings")["app"];
+        $this->platesEngine = $container->get(PlatesEngine::class);
     }
 
     /**
@@ -40,13 +42,9 @@ class IndexAction implements ActionInterface
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        return $response->withJson([
-            "success" => true,
-            "message" => "finished",
-            "data" => [
-                "app" => $this->exampleService->getAppName(),
-                "version" => Kernel::VERSION,
-            ]
+        return $this->platesEngine->render('plates', [
+            "app" => $this->app,
+            "version" => Kernel::VERSION,
         ]);
     }
 }
