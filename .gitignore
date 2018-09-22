@@ -5,6 +5,7 @@
 !/public/
 !/src/
 !/tests/
+!/templates/
 !/var/
 !.env.example
 !.gitignore
@@ -12,6 +13,7 @@
 !docker-compose.yml
 !docker-compose-dev.yml
 !LICENSE
+!phpunit.xml
 !README.md
 !xdebug.disable.ini
 !xdebug.ini

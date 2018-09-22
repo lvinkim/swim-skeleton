@@ -1,0 +1,97 @@
+<?php
+/** @var \League\Plates\Template\Template $this */
+?>
+
+<!DOCTYPE html >
+<html>
+<head>
+
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-size: 16px;
+            color: #535353;
+            margin: 0;
+        }
+
+        body {
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        div {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+        }
+
+        .verticalAlign {
+            vertical-align: middle;
+            height: 100%;
+            width: 0;
+            border: none;
+            padding: 0;
+            margin: 0 0 0 -5px;
+        }
+
+        .divAll {
+            width: 100%;
+            height: auto;
+            vertical-align: middle;
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+
+        .divBody {
+            width: 100%;
+            min-width: 900px;
+            vertical-align: middle;
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+
+        .divTop {
+            height: 61px;
+            width: 80%;
+            min-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            border-bottom: 5px solid #ff8a00;
+            vertical-align: top;
+            display: block;
+        }
+
+        .divBottom {
+            width: 100%;
+            min-width: 900px;
+            height: 100px;
+            margin: 0;
+            vertical-align: bottom;
+            display: block;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="verticalAlign"></div>
+<div class="divAll">
+    <div id='divTop' class="divTop">
+        <h1><?= $this->e($app) ?> <?= $this->e($version) ?></h1>
+    </div>
+    <div id='divBody' class="divBody">
+
+    </div>
+    <div id='divBottom' class="divBottom">
+        <span>github : </span>
+        <a href="https://github.com/lvinkim/swim-skeleton">
+            https://github.com/lvinkim/swim-skeleton
+        </a>
+    </div>
+</div>
+</body>
+</html>
