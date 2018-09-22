@@ -18,7 +18,7 @@ $ cp .env.example .env
 
 #### 开发模式(php -S)启动
 ```
-$ php bin/server.php server:dev:start 0.0.0.0:6600
+$ php bin/server.php server:dev:start 8080
 
 # 如果使用 docker 
 $ docker-compose -f docker-compose-dev.yml up
@@ -26,7 +26,7 @@ $ docker-compose -f docker-compose-dev.yml up
 
 #### 生产模式(swoole)启动
 ```
-$ php bin/server.php server:start
+$ php bin/server.php server:start 8080
 
 # 如果使用 docker
 $ docker-compose up
