@@ -12,12 +12,13 @@ namespace App\Service\Plates;
 use League\Plates\Engine;
 use Lvinkim\Swim\Service\Component\ShareableService;
 use Psr\Container\ContainerInterface;
+use Slim\Http\Request;
 use Slim\Http\Response;
 
 class PlatesEngine extends ShareableService
 {
-    /** @var Engine */
-    private $engine;
+    private $templatePath;
+    private $fileExtension;
 
     /** @var array 注册到模板的数组 */
     protected $renderData = [];
@@ -27,10 +28,9 @@ class PlatesEngine extends ShareableService
         parent::__construct($container);
 
         $settings = $container->get("settings");
-        $templatePath = $settings["plates"]["templatePath"];
-        $fileExtension = $settings["plates"]["fileExtension"];
+        $this->templatePath = $settings["plates"]["templatePath"];
+        $this->fileExtension = $settings["plates"]["fileExtension"];
 
-        $this->engine = new Engine($templatePath, $fileExtension);
     }
 
     public function assignRenderData($key, $val)
@@ -41,6 +41,7 @@ class PlatesEngine extends ShareableService
     public function render($name, array $data = [])
     {
         $router = $this->container->get('router');
+        /** @var Request $request */
         $request = $this->container->get('request');
 
         $this->assignRenderData('baseUrl', '/');
@@ -51,14 +52,14 @@ class PlatesEngine extends ShareableService
             $this->assignRenderData($key, $value);
         }
 
-        $html = $this->engine->render($name, $this->renderData);
-
         /** @var Response $response */
-        $response = $this->container->get("response");
-        $response->withHeader("Content-Type", "text/html;charset=utf-8");
-        $response->write($html);
+        $response = $this->container->get('response');
 
-        return $response;
+        $engine = new Engine($this->templatePath, $this->fileExtension);
+        $html = $engine->render($name, $this->renderData);
+
+        return $response->withAddedHeader("Content-Type", "text/html;charset=utf-8")
+            ->write($html);
     }
 
 }
