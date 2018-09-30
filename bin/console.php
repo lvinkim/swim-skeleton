@@ -6,15 +6,12 @@
  * Time: 11:07 PM
  */
 
-use Lvinkim\Swim\Console\Application;
-use Lvinkim\Swim\Kernel;
+require dirname(__DIR__) . "/vendor/autoload.php";
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+$settings = require dirname(__DIR__) . "/config/settings.config.php";
 
-$settings = require dirname(__DIR__) . '/src/settings.php';
+$kernel = new \Lvinkim\SwimKernel\Kernel($settings);
 
-$kernel = new Kernel($settings);
+$console = new \Lvinkim\SwimKernel\Console($kernel);
 
-$app = new Application($kernel);
-
-$app->run();
+$console->run();

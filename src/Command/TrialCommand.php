@@ -2,32 +2,30 @@
 /**
  * Created by PhpStorm.
  * User: lvinkim
- * Date: 2018/8/14
- * Time: 9:45 PM
+ * Date: 30/09/2018
+ * Time: 11:14 PM
  */
 
 namespace App\Command;
 
 
 use Lvinkim\SwimKernel\Component\Command;
-use Lvinkim\SwimKernel\Service\SwimKernelLogger;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class IamAliveCommand extends Command
+class TrialCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('app:alive')
-            ->setDescription('上报心跳');
+        $this->setName("app:trial")
+            ->setDescription("测试脚本");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var SwimKernelLogger $logger */
-        $logger = $this->container[SwimKernelLogger::class];
+        $output->writeln("[" . date("Y-m-d H:i:s") . "] " . $this->getName() . " 开始");
 
-        $logger->visionWatch('command', 'i-am-alive', 1);
+        $output->writeln("[" . date("Y-m-d H:i:s") . "] " . $this->getName() . " 结束");
     }
 
 }

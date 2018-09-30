@@ -2,40 +2,34 @@
 /**
  * Created by PhpStorm.
  * User: lvinkim
- * Date: 23/09/2018
- * Time: 1:26 AM
+ * Date: 30/09/2018
+ * Time: 11:37 PM
  */
 
 namespace App\Action;
 
 
-use App\Service\Plates\PlatesEngine;
-
 use Lvinkim\SwimKernel\Component\ActionInterface;
-use Lvinkim\SwimKernel\Kernel;
+use Slim\App;
 use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class PlatesAction implements ActionInterface
+class SlimAction implements ActionInterface
 {
 
-    private $app;
-    /** @var PlatesEngine */
-    private $platesEngine;
-
     /**
-     * ActionInterface constructor.
-     *
+     * $container 包含了所有已实例化的 Service 对象和 Action 对象
+     * Container constructor.
      * @param Container $container
      */
     public function __construct(Container $container)
     {
-        $this->app = $container["settings"]["app"];
-        $this->platesEngine = $container[PlatesEngine::class];
+
     }
 
     /**
+     * Action 入库函数
      * @param Request $request
      * @param Response $response
      * @param array $args
@@ -43,9 +37,8 @@ class PlatesAction implements ActionInterface
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        return $this->platesEngine->render('plates', [
-            "app" => $this->app,
-            "version" => Kernel::VERSION,
+        return $response->withJson([
+            "slim" => App::VERSION,
         ]);
     }
 }

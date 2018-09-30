@@ -3,7 +3,8 @@
   "type": "project",
   "license": "MIT",
   "require": {
-    "lvinkim/swim": "~0.3.0"
+    "lvinkim/swim-kernel": "^0.1.0",
+    "league/plates": "^3.3"
   },
   "require-dev": {
     "swoft/swoole-ide-helper": "dev-master",

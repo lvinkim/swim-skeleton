@@ -10,13 +10,14 @@ namespace App\Service\Plates;
 
 
 use League\Plates\Engine;
-use Lvinkim\Swim\Service\Component\ShareableService;
+use Lvinkim\SwimKernel\Component\ServiceInterface;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class PlatesEngine extends ShareableService
+class PlatesEngine implements ServiceInterface
 {
+    private $container;
     private $templatePath;
     private $fileExtension;
 
@@ -25,8 +26,7 @@ class PlatesEngine extends ShareableService
 
     public function __construct(ContainerInterface $container)
     {
-        parent::__construct($container);
-
+        $this->container = $container;
         $settings = $container->get("settings");
         $this->templatePath = $settings["plates"]["templatePath"];
         $this->fileExtension = $settings["plates"]["fileExtension"];

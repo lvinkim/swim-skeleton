@@ -8,7 +8,7 @@
 
 namespace Tests\Functional;
 
-use Lvinkim\Swim\Kernel;
+use Lvinkim\SwimKernel\Kernel;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
@@ -26,9 +26,9 @@ class SwimKernelTestCase extends TestCase
     protected function bootKernel()
     {
         if (!(self::$kernel instanceof Kernel)) {
-            $settings = require dirname(__DIR__) . '/../src/settings.php';
+            $settings = require dirname(__DIR__) . '/../config/settings.config.php';
             self::$kernel = new Kernel($settings);
-            self::$kernel->boot();
+            self::$kernel->dispatchWorkerStart(-1);
         }
 
         return self::$kernel;

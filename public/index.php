@@ -6,19 +6,16 @@
  * Time: 2:52 PM
  */
 
-use Lvinkim\Swim\Console\Application;
-use Lvinkim\Swim\Kernel;
 use Symfony\Component\Console\Input\ArrayInput;
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+require dirname(__DIR__) . "/vendor/autoload.php";
 
-$settings = require dirname(__DIR__) . '/src/settings.php';
+$settings = require dirname(__DIR__) . "/config/settings.config.php";
 
-$kernel = new Kernel($settings);
+$kernel = new \Lvinkim\SwimKernel\Kernel($settings);
 
-$app = new Application($kernel);
+$console = new \Lvinkim\SwimKernel\Console($kernel);
 
 $commandInput = new ArrayInput(['command' => "slim:run"]);
 
-$app->run($commandInput);
-
+$console->run($commandInput);

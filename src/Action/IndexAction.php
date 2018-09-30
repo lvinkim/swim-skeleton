@@ -10,9 +10,9 @@ namespace App\Action;
 
 
 use App\Service\ExampleService;
-use Lvinkim\Swim\Action\Component\ActionInterface;
-use Lvinkim\Swim\Kernel;
-use Psr\Container\ContainerInterface;
+use Lvinkim\SwimKernel\Component\ActionInterface;
+use Lvinkim\SwimKernel\Kernel;
+use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -23,13 +23,12 @@ class IndexAction implements ActionInterface
     private $exampleService;
 
     /**
-     * ActionInterface constructor.
-     *
-     * @param \Psr\Container\ContainerInterface $container
+     * ActionInterface constructor
+     * @param Container $container
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(Container $container)
     {
-        $this->exampleService = $container->get(ExampleService::class);
+        $this->exampleService = $container[ExampleService::class];
     }
 
     /**

@@ -9,18 +9,16 @@
 namespace App\Service;
 
 
-use Lvinkim\Swim\Service\Component\ShareableService;
+use Lvinkim\SwimKernel\Component\ServiceInterface;
 use Psr\Container\ContainerInterface;
 
-class ExampleService extends ShareableService
+class ExampleService implements ServiceInterface
 {
     private $app;
 
     public function __construct(ContainerInterface $container)
     {
-        parent::__construct($container);
-
-        $settings = $container->get("settings");
+        $settings = $container["settings"];
         $this->app = $settings["app"];
     }
 

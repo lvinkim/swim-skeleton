@@ -6,14 +6,11 @@
  * Time: 8:06 PM
  */
 
-use Lvinkim\Swim\Console\Console;
-use Lvinkim\Swim\Kernel;
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+use App\SwooleServer\SwooleCommand;
 
-$settings = require dirname(__DIR__) . '/src/settings.php';
-$kernel = new Kernel($settings);
+require dirname(__DIR__) . "/swoole-server/required.php";
 
-$console = new Console($kernel);
+$settings = require dirname(__DIR__) . "/config/kernel.config.php";
 
-$console->run();
+(new SwooleCommand($settings))->run();
