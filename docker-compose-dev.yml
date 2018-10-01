@@ -4,7 +4,7 @@ services:
   dev:
     image: lvinkim/php-env-docker:latest
     ports:
-      - 6600:80
+      - 6600:8080
     volumes:
       - .:/var/www/html
       - ./xdebug.ini:/etc/php/7.2/mods-available/xdebug.ini
@@ -12,5 +12,5 @@ services:
     restart: always
     command:
       - php
-      - bin/server.php
-      - server:dev:start
+      - bin/console.php
+      - swim:dev:start
