@@ -1,14 +1,17 @@
 /*
 
 !.gitignore
+
 !/bin/
+!/config/
 !/public/
 !/src/
-!/tests/
+!/swoole-server/
 !/templates/
+!/tests/
 !/var/
+
 !.env.example
-!.gitignore
 !composer.json
 !docker-compose.yml
 !docker-compose-dev.yml
