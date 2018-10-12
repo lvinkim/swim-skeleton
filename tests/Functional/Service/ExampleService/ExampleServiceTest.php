@@ -6,11 +6,11 @@
  * Time: 2:25 AM
  */
 
-namespace Tests\Functional\Service\ExampleService;
+namespace App\Tests\Functional\Service\ExampleService;
 
 
 use App\Service\ExampleService;
-use Tests\Functional\SwimKernelTestCase;
+use App\Tests\Functional\SwimKernelTestCase;
 
 class ExampleServiceTest extends SwimKernelTestCase
 {

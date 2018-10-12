@@ -6,7 +6,7 @@
  * Time: 6:07 PM
  */
 
-namespace Tests\Functional;
+namespace App\Tests\Functional;
 
 use Lvinkim\SwimKernel\Kernel;
 use PHPUnit\Framework\TestCase;
