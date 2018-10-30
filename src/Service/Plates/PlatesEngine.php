@@ -38,11 +38,9 @@ class PlatesEngine implements ServiceInterface
         $this->renderData[$key] = $val;
     }
 
-    public function render($name, array $data = [])
+    public function render(Request $request, Response $response, $name, array $data = [])
     {
         $router = $this->container->get('router');
-        /** @var Request $request */
-        $request = $this->container->get('request');
 
         $this->assignRenderData('baseUrl', '/');
         $this->assignRenderData('router', $router);
@@ -51,9 +49,6 @@ class PlatesEngine implements ServiceInterface
         foreach ($data as $key => $value) {
             $this->assignRenderData($key, $value);
         }
-
-        /** @var Response $response */
-        $response = $this->container->get('response');
 
         $engine = new Engine($this->templatePath, $this->fileExtension);
         $html = $engine->render($name, $this->renderData);

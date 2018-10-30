@@ -43,7 +43,7 @@ class PlatesAction implements ActionInterface
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        return $this->platesEngine->render('plates', [
+        return $this->platesEngine->render($request, $response, 'plates', [
             "app" => $this->app,
             "version" => Kernel::VERSION,
         ]);
